@@ -1,16 +1,47 @@
 package test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class V3Sequential_block {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int N = 2;
+	public static void main(String[] args) throws FileNotFoundException {
+
+		Scanner scanner = new Scanner(new File("D:\\workspace\\proyecto-final\\src\\test\\prueba.txt"));
+		
+		int N = 2; 
 		int P = 2;
 		int M = 2;
-
-		int[][] A = { { 1, 2 }, { 3, 4 } };
-		int[][] B = { { 5, 6 }, { 7, 8 } };
+		
+		int[][] A = new int[N][P];
+		for (int i = 0; i < N; i++) {
+		    for (int j = 0; j < P; j++) {
+		        A[i][j] = scanner.nextInt();
+		    }
+		}
+		scanner.close(); // Cierra el archivo
+		
+		int[][] B = A;
 		int[][] Result = new int[N][M];
+		
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				System.out.print(A[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
+		System.out.println("----------------------");
+		
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				System.out.print(B[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
+		System.out.println("----------------------");
 
 		sequentialBlockMultiplication(A, B, Result, N, P, M); // Pasar argumentos al método
 
@@ -59,5 +90,5 @@ public class V3Sequential_block {
 	    }
 	}
 }
-//ESTA MULTIPLICACION ES LA TRANSPUESTA DE A POR B Y EL RESULTADO ES LA TRANSPUESTA
+//ESTA MULTIPLICACION ES LA TRANSPUESTA DE A POR la transpuesta de B Y EL RESULTADO ES LA TRANSPUESTA
 

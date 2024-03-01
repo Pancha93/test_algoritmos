@@ -1,28 +1,52 @@
 package test;
 
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.management.ManagementFactory;
 import java.util.concurrent.TimeUnit;
 
 public class III4Parallel_Block {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 
-		int N = 2;
-		int P = 2;
-		int M = 2;
-
-		int[][] A = { { 1, 2 }, { 3, 4 } };
-		int[][] B = { { 5, 6 }, { 7, 8 } };
+Scanner scanner = new Scanner(new File("D:\\workspace\\proyecto-final\\src\\test\\matriz4.txt"));
+		
+		int N = 4; 
+		int P = 4;
+		int M = 4;
+		
+		int[][] A = new int[N][P];
+		for (int i = 0; i < N; i++) {
+		    for (int j = 0; j < P; j++) {
+		        A[i][j] = scanner.nextInt();
+		    }
+		}
+		scanner.close(); // Cierra el archivo
+		
+		int[][] B = A;
 		int[][] Result = new int[N][M];
-
+		
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
-				Result[i][j] = 0; // Inicializar a ceros
+				System.out.print(A[i][j] + " ");
 			}
+			System.out.println();
 		}
+		
+		System.out.println("----------------------");
+		
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				System.out.print(B[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
+		System.out.println("----------------------");
 
 		parallelBlockMultiplication(A, B, Result, N, M, P);
 

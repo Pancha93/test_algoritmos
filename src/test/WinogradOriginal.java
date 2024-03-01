@@ -1,17 +1,47 @@
 package test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class WinogradOriginal {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) throws FileNotFoundException {
 
-		int N = 2;
-		int P = 2;
-		int M = 2;
-
-		double[][] A = { { 1, 2 }, { 3, 4 } };
-		double[][] B = { { 5, 6 }, { 7, 8 } };
-		double[][] Result = new double[N][M];
+		Scanner scanner = new Scanner(new File("D:\\workspace\\proyecto-final\\src\\test\\matriz4.txt"));
+		
+		int N = 4; 
+		int P = 4;
+		int M = 4;
+		
+		int[][] A = new int[N][P];
+		for (int i = 0; i < N; i++) {
+		    for (int j = 0; j < P; j++) {
+		        A[i][j] = scanner.nextInt();
+		    }
+		}
+		scanner.close(); // Cierra el archivo
+		
+		int[][] B = A;
+		int[][] Result = new int[N][M];
+		
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				System.out.print(A[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
+		System.out.println("----------------------");
+		
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				System.out.print(B[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
+		System.out.println("----------------------");
 
 		WinogradOriginal(A, B, Result, N, P, M); // Pasar argumentos al método
 
@@ -24,7 +54,7 @@ public class WinogradOriginal {
 
 	}
 
-	public static void WinogradOriginal(double[][] A, double[][] B, double[][] Result, int N, int P, int M) {
+	public static void WinogradOriginal(int[][] A, int[][] B, int[][] Result, int N, int P, int M) {
 		int i, j, k;
 		int aux;
 		int upsilon = P % 2;
