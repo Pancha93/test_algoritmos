@@ -47,8 +47,18 @@ Scanner scanner = new Scanner(new File("D:\\workspace\\proyecto-final\\src\\test
 		}
 		
 		System.out.println("----------------------");
+		
+		long startTime = System.nanoTime();  // tiempo inicial
+		parallelBlockMultiplication(A, B, Result, N, M, P); // Pasar argumentos al método
+		long endTime = System.nanoTime(); // Captura el tiempo de finalizaci�n
+		long executionTimeInNanoseconds = endTime - startTime; // Calcula la diferencia de tiempo en nanosegundos
 
-		parallelBlockMultiplication(A, B, Result, N, M, P);
+		double executionTimeInMicroseconds = (double) executionTimeInNanoseconds / 1000; // Convierte a microsegundos
+		double executionTimeInMilliseconds = executionTimeInMicroseconds / 1000; // Convierte a milisegundos
+		System.out.println("Tiempo de ejecuci�n: " + executionTimeInMicroseconds + " microsegundos (" + String.format("%.5f", executionTimeInMilliseconds) + " milisegundos)");
+		System.out.println("---------------------------------");
+
+		
 
 		// Imprimir el resultado
 		for (int i = 0; i < N; i++) {

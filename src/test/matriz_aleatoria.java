@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.Random;
 
 
-public class matriz16 {
+public class matriz_aleatoria {
 	 public static void main(String[] args) throws SQLException {
 	        int N = 4;
 	        int P = 4;
